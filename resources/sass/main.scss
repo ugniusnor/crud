@@ -1,0 +1,43 @@
+@import "./reset";
+header {
+    height: 10vh;
+}
+body {
+    min-height: 100vh;
+}
+.hero { 
+    // background-image: url("../assets/img/hero.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    height: 90vh;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-sm {
+    width: 20px;
+    height: 20px;
+}
+
+.avatar-section {
+    // background-image: url("../assets/img/defaultAvatar.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.icon-text {
+    width: 80px;
+}
+
+@media (min-width: 768px) { 
+
+
+    .main-dashboard {
+        grid-template-columns: 25% 70%;
+    }
+ }
