@@ -29,34 +29,22 @@
         </div>
 
         <div>
+            
+            @if ($projects->count() > 0)
+              @foreach ($projects as $project)
+              <div class="flex flex-row justify-between w-11/12 mx-auto items-center my-4 max-w-lg md:max-w-none">
+                <p>{{$project->project_name}}</p>
+                <a class="flex items-center justify-center text-sm bg-indigo-500 text-gray-100 p-1 h-8 w-28 rounded-full tracking-wide
+                focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                shadow-lg" href="{{route('project.show', $project)}}">More details</a>
+            </div>
+              @endforeach
+            {{ $projects->links() }}
+            @else 
             <div class="flex flex-row justify-between w-11/12 mx-auto items-center my-4 max-w-lg md:max-w-none">
-                <p>Winter photoShoot</p>
-                <a class="flex items-center justify-center text-sm bg-indigo-500 text-gray-100 p-1 h-8 w-28 rounded-full tracking-wide
-                focus:outline-none focus:shadow-outline hover:bg-indigo-600
-                shadow-lg" href="{{route('project.show')}}">More details</a>
+                <p>No projects yet</p>
             </div>
-
-            <div class="flex flex-row justify-between w-11/12 mx-auto items-center my-4 max-w-lg md:max-w-none">
-                <p>Winter photoShoot</p>
-                <a class="flex items-center justify-center text-sm bg-indigo-500 text-gray-100 p-1 h-8 w-28 rounded-full tracking-wide
-                focus:outline-none focus:shadow-outline hover:bg-indigo-600
-                shadow-lg" href="">More details</a>
-            </div>
-
-            <div class="flex flex-row justify-between w-11/12 mx-auto items-center my-4 max-w-lg md:max-w-none">
-                <p>Winter photoShoot</p>
-                <a class="flex items-center justify-center text-sm bg-indigo-500 text-gray-100 p-1 h-8 w-28 rounded-full tracking-wide
-                focus:outline-none focus:shadow-outline hover:bg-indigo-600
-                shadow-lg" href="">More details</a>
-            </div>
-
-               <div class="flex flex-row justify-between w-11/12 mx-auto items-center my-4 max-w-lg md:max-w-none">
-                <p>Winter photoShoot</p>
-                <a class="flex items-center justify-center text-sm bg-indigo-500 text-gray-100 p-1 h-8 w-28 rounded-full tracking-wide
-                focus:outline-none focus:shadow-outline hover:bg-indigo-600
-                shadow-lg" href="">More details</a>
-            </div>
-          
+            @endif
             
 
         </div>

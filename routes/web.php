@@ -32,6 +32,6 @@ Route::group(['prefix' => 'projects'], function(){
     Route::get('edit/{project}', [ProjectController::class, 'edit'])->name('project.edit');
     Route::post('update/{project}', [ProjectController::class, 'update'])->name('project.update');
     Route::post('delete/{project}', [ProjectController::class, 'destroy'])->name('project.destroy');
-    Route::get('show/', [ProjectController::class, 'show'])->name('project.show');
+    Route::get('show/{project}', [ProjectController::class, 'show'])->name('project.show');
  });
  

@@ -12,10 +12,15 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Project $project)
+    public function index()
     {
-        
-        return view("projects.index");
+        $projects =  Project::simplePaginate(20);
+       
+        return view("projects.index",[
+            'projects'=>$projects
+        ]);
+
+   
     }
 
     /**
@@ -54,7 +59,7 @@ class ProjectController extends Controller
 
                 //if project is created, getting $id->id to get last submited project id and creating tables belonging to that id
 
-            foreach ( range(0, $request->groups_number) as $index) {
+            foreach ( range(1, $request->groups_number) as $index) {
                 Group::create([
                     'project_id'=>$id->id
                 ]);                
@@ -69,9 +74,11 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        return view("projects.show");
+        return view("projects.show",[
+            'groups'=>Group::where('project_id',$id)->get()->all()
+        ]);
     }
 
     /**

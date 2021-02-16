@@ -28,7 +28,6 @@
 
 
 
-
         <div class=" my-3  flex flex-row flex-wrap justify-evenly">
             <p class="mx-2">Jonas Petraiis</p>
             <p class="mx-2">Group #5</p>
@@ -62,8 +61,9 @@
 
 <!-- GROUPS SECTION  -->
 <div class="grid grid-cols-1 xl:grid-cols-2">
-
-<div class="border-2 w-11/12 min-h-20 mx-auto my-3 md:w-80">
+    @foreach ($groups as $group)
+        
+    <div class="border-2 w-11/12 min-h-20 mx-auto my-3 md:w-80">
     <p class="bg-gray-200 text-center">Group #1</p>
     <div class="flex flex-row items-center justify-between w-11/12 mx-auto my-2">
         <p class="mx-2">Jonas Petras</p>
@@ -101,34 +101,10 @@
         </form> 
     </div>
 </div>
+    @endforeach
 
 
-<div class="border-2 w-11/12 min-h-20 mx-auto my-3 md:w-80">
-    <p class="bg-gray-200 text-center">Group #1</p>
-    <div class="flex flex-row items-center justify-between w-11/12 mx-auto my-2">
-        <p class="mx-2">Jonas Petras</p>
-        <form action="">
-            <button class="h-6 w-18 p-1 text-xs bg-red-500 text-white rounded-md focus:outline-none focus:ring-2 ring-red-300 ring-offset-2 flex items-center justify-center"> Remve student</button>
-        </form>                   
-        
-    </div>
 
-    <div class="flex flex-row items-center justify-between w-11/12 mx-auto my-2">
-        <p class="mx-2">Jonas Petras</p>
-        <form action="">
-            <button class="h-6 w-18 p-1 text-xs bg-red-500 text-white rounded-md focus:outline-none focus:ring-2 ring-red-300 ring-offset-2 flex items-center justify-center"> Remve student</button>
-        </form>                   
-        
-    </div>
-
-    <div class="flex flex-row items-center justify-between w-11/12 mx-auto my-2">
-        <p class="mx-2">Jonas Petras</p>
-        <form action="">
-            <button class="h-6 w-18 p-1 text-xs bg-red-500 text-white rounded-md focus:outline-none focus:ring-2 ring-red-300 ring-offset-2 flex items-center justify-center"> Remve student</button>
-        </form>                   
-        
-    </div>
-</div>
 </div>
             <!-- GROUPS SECTION  -->
 
