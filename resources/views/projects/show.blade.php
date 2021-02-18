@@ -19,16 +19,16 @@
     <div class="border-2 w-11/12 min-h-20 mx-auto my-3 md:w-100"> 
         
         <p class="bg-gray-200 text-center"> Students in this project</p>
-        <a class="flex flex-row items-center justify-center my-3 w-full" href="#">
+        <div class="cursor-pointer flex flex-row items-center justify-center my-3 w-full" id="add_student">
             <img class="icon mx-2" src="{{asset('assets/icons/add.svg')}}" alt=""> <span>Add New Student</span>
-        </a>
+        </div>
 
         @foreach ($groups as $group)
         {{-- Checking if there is any students withing groups of this project --}}
         @if ($group->students) 
         @foreach ($group->students as $student)
             
-            <div class="  my-3 mx-auto w-10/12  flex flex-row flex-wrap justify-between">
+            <div class="my-3 mx-auto w-10/12  flex flex-row flex-wrap justify-between">
                 <p class="mx-2 w-2/6">{{$student->name}} {{$student->surname}}</p>
                 <p class="mx-2 w-2/6">Group #{{$group->group_number}}</p>
                 <form action="">

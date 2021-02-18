@@ -1904,6 +1904,8 @@ var app = new Vue({
   el: '#app'
 });
 
+var main = __webpack_require__(/*! ./main.js */ "./resources/js/main.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -1947,6 +1949,44 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/addStudentPopUp.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/addStudentPopUp.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "popUp": () => (/* binding */ popUp)
+/* harmony export */ });
+function popUp() {
+  if (document.querySelector("#add_student")) {
+    var btn = document.querySelector("#add_student");
+    btn.addEventListener('click', function () {
+      console.log("hello");
+    });
+  }
+}
+
+
+
+/***/ }),
+
+/***/ "./resources/js/main.js":
+/*!******************************!*\
+  !*** ./resources/js/main.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_addStudentPopUp_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/addStudentPopUp.js */ "./resources/js/components/addStudentPopUp.js");
+
+(0,_components_addStudentPopUp_js__WEBPACK_IMPORTED_MODULE_0__.popUp)();
 
 /***/ }),
 
