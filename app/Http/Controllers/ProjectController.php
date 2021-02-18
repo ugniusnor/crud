@@ -76,8 +76,10 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
+        $project=Project::where('id',$id)->get()->all();
         return view("projects.show",[
-            'groups'=>Group::where('project_id',$id)->get()->all()
+            'groups'=>Group::where('project_id',$id)->get()->all(),
+            'project'=>$project[0]
         ]);
     }
 
