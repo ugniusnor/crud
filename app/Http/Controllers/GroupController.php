@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -14,7 +15,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $student = Student::where('id',2)->get();
+        $group =$student[0]->group();
+        dd($group->project());
     }
 
     /**

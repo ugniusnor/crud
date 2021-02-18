@@ -8,8 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
-    protected $fillable = ['project_id'];
+    protected $fillable = ['project_id', 'group_number'];
     public function project () {
-        return $this->hasOne("App\Models\Project",'project_id','id');
+        return $this->belongsTo("App\Models\Project",'project_id','id');
+    }
+
+    public function students () {
+        return $this->hasMany("App\Models\Student",'group_id','id');
     }
 }

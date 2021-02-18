@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,4 @@ Route::group(['prefix' => 'projects'], function(){
     Route::post('delete/{project}', [ProjectController::class, 'destroy'])->name('project.destroy');
     Route::get('show/{project}', [ProjectController::class, 'show'])->name('project.show');
  });
- 
+ Route::get('/groups', [GroupController::class, 'index'])->name('group.index');

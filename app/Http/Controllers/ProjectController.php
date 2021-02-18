@@ -15,7 +15,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects =  Project::simplePaginate(20);
-       
+        
         return view("projects.index",[
             'projects'=>$projects
         ]);
@@ -42,7 +42,6 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
   
-
         $this->validate($request,[
             'project_name'=>'required|min:3|max:255|regex:/^[a-zA-Z0-9\s]+$/',
             'groups_number'=>'required|numeric|digits_between:1,100',    
@@ -56,12 +55,11 @@ class ProjectController extends Controller
                 'students_per_group'=>$request->students_per_group,
             ]);
 
-
                 //if project is created, getting $id->id to get last submited project id and creating tables belonging to that id
-
             foreach ( range(1, $request->groups_number) as $index) {
                 Group::create([
-                    'project_id'=>$id->id
+                    'project_id'=>$id->id,
+                    'group_number'=>$index
                 ]);                
             }
            
@@ -76,6 +74,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
+
+
         $project=Project::where('id',$id)->get()->all();
         return view("projects.show",[
             'groups'=>Group::where('project_id',$id)->get()->all(),

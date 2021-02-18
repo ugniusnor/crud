@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name',64);
             $table->string('surname',64);
-            $table->foreignId('group_id')->constrained()->onDelete('cascade');
+            $table->foreignId('group_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
