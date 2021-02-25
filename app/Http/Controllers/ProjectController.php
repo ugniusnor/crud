@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\Group;
+use App\Models\Student;
+
 class ProjectController extends Controller
 {
     /**
@@ -15,9 +17,10 @@ class ProjectController extends Controller
     public function index()
     {
         $projects =  Project::simplePaginate(20);
-        
+
         return view("projects.index",[
-            'projects'=>$projects
+            'projects'=>$projects,
+           
         ]);
 
    
@@ -79,7 +82,8 @@ class ProjectController extends Controller
         $project=Project::where('id',$id)->get()->all();
         return view("projects.show",[
             'groups'=>Group::where('project_id',$id)->get()->all(),
-            'project'=>$project[0]
+            'project'=>$project[0],
+            'students_per_group'=>$project[0]->students_per_group
         ]);
     }
 

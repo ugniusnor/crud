@@ -1964,10 +1964,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "popUp": () => (/* binding */ popUp)
 /* harmony export */ });
 function popUp() {
+  var state = false;
+
   if (document.querySelector("#add_student")) {
     var btn = document.querySelector("#add_student");
+
+    if (state) {
+      var closeBtn = document.querySelector(".close");
+      closeBtn.addEventListener('click', function () {
+        state = false;
+        document.querySelector(".popUp").style.display = "none";
+      });
+    }
+
     btn.addEventListener('click', function () {
-      console.log("hello");
+      state = !state;
+
+      if (state) {
+        document.querySelector(".popUp").style.display = "block";
+
+        var _closeBtn = document.querySelector(".close");
+
+        _closeBtn.addEventListener('click', function () {
+          state = false;
+          document.querySelector(".popUp").style.display = "none";
+        });
+      } else {
+        document.querySelector(".popUp").style.display = "none";
+      }
     });
   }
 }

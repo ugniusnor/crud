@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,13 @@ Route::group(['prefix' => 'projects'], function(){
     Route::post('delete/{project}', [ProjectController::class, 'destroy'])->name('project.destroy');
     Route::get('show/{project}', [ProjectController::class, 'show'])->name('project.show');
  });
+
+ //groups
  Route::get('/groups', [GroupController::class, 'index'])->name('group.index');
+
+
+
+ //sutdents
+ Route::post('/groups/store', [StudentController::class, 'store'])->name('student.store');
+
+

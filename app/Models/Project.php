@@ -17,5 +17,9 @@ class Project extends Model
     public function groups () {
         return $this->hasMany("App\Models\Group",'project_id','id');
     }
+
+    public function students () {
+        return $this->hasMany("App\Models\Student",'project_id','id');
+    }
     
 }
