@@ -33,8 +33,11 @@
 <div class="w-11/12 mx-auto">
     <p>Groups for this project: {{$project->groups_number}}</p>
     <p>Maximum students per group: {{$project->students_per_group}}</p>
+    <form action="{{route('project.destroy', $project)}}" method="POST">
+        @csrf
+        <button class="h-8 my-5 w-32 p-1 text-lg bg-red-500 text-white rounded-md focus:outline-none focus:ring-2 ring-red-300 ring-offset-2 flex items-center justify-center"> Delete project</button>
+    </form>  
 </div>
-
     <!-- ALL STUDENTS IN THIS PROJECT -->
 
     <!-- POp up -->

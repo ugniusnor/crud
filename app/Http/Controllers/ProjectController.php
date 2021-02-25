@@ -9,6 +9,11 @@ use App\Models\Student;
 
 class ProjectController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,8 +52,8 @@ class ProjectController extends Controller
   
         $this->validate($request,[
             'project_name'=>'required|min:3|max:255|regex:/^[a-zA-Z0-9\s]+$/',
-            'groups_number'=>'required|numeric|digits_between:1,100',    
-            'students_per_group'=>'required|numeric|digits_between:1,30',
+            'groups_number'=>'required|numeric|digits_between:1,20',    
+            'students_per_group'=>'required|numeric|digits_between:1,15',
             
             ]);
           
@@ -118,6 +123,17 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        
+        try {
+           
+            
+            $project->delete();
+          
+            return redirect()->route('project.index')->with('storeStatus', 'Successfully deleted project!');
+        }        
+        catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withErrors(['Failed to delete']);
+            
+        }
     }
 }
