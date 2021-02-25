@@ -15,9 +15,13 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $student = Student::where('id',2)->get();
-        $group =$student[0]->group();
-        dd($group->project());
+        $groups =  Group::orderBy('id','desc')->simplePaginate(10);
+
+        return view("groups.index",[
+            'groups'=>$groups,
+           
+        ]);
+
     }
 
     /**

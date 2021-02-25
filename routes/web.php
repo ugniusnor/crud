@@ -43,6 +43,11 @@ Route::group(['prefix' => 'projects'], function(){
 
 
  //sutdents
- Route::post('/groups/store', [StudentController::class, 'store'])->name('student.store');
+ Route::post('/student/store', [StudentController::class, 'store'])->name('student.store');
+ Route::post('/student/delete/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+ Route::post('/student/reasign/{student}', [StudentController::class, 'removeFromGroup'])->name('student.removeFromGroup');
+ Route::post('/student/assign', [StudentController::class, 'assignToGroup'])->name('student.addToGroup');
 
+
+ 
 

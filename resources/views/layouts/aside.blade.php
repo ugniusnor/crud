@@ -14,7 +14,7 @@
        </div>
      
        <div class="flex flex-row justify-center w-full ">     
-        <a class="hover:bg-gray-200 w-full text-center my-3 p-2 flex flex-row justify-center items-center" href="#">
+        <a class="hover:bg-gray-200 w-full text-center my-3 p-2 flex flex-row justify-center items-center" href="{{route('group.index')}}">
            <div class="flex flex-row w-40 justify-start items-start">
             <img class="icon mx-2" src={{asset('assets/icons/sketch.svg')}} alt="">   
             <span class="mx-2">My groups</span>
@@ -23,7 +23,7 @@
        </div>
 
        <div class="flex flex-row justify-center w-full ">     
-        <a class="hover:bg-gray-200 w-full text-center my-3 p-2 flex flex-row justify-center items-center" href="#">
+        <a class="hover:bg-gray-200 w-full text-center my-3 p-2 flex flex-row justify-center items-center" href="{{route('project.index')}}">
            <div class="flex flex-row w-40 justify-start items-start">
             <img class="icon mx-2" src={{asset('assets/icons/optimization.svg')}}  alt="">   
             <span class="mx-2">My projects</span>

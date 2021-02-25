@@ -7,79 +7,94 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        dd("ok");
+      
+        $this->validate($request,[
+            'name'=>'required|min:3|max:255|regex:/^[a-zA-Z0-9\s]+$/',
+            'surname'=>'required|min:3|max:255|regex:/^[a-zA-Z0-9\s]+$/',    
+            ]);
+                $projectId=$request->project_id;
+                // dd($projectId);
+            Student::create([
+                'name'=>$request->name,
+                'surname'=>$request->surname,    
+                'project_id'=>$projectId,
+                'group_id'=>$request->group_id,
+
+            ]);
+            return redirect()->back()->with('storeStatus', 'Successfully added student!');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Student  $student
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show(Student $student)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Student  $student
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Student $student)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student  $student
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, Student $student)
     {
-        //
+            
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Student  $student
-     * @return \Illuminate\Http\Response
-     */
+
+
+    public function removeFromGroup(Request $request, Student $student) {
+        $student->update([
+            'group_id'=> null
+        ]);
+        return redirect()->back()->with('storeStatus', 'Student removed from the group');
+    }
+
+    public function assignToGroup(Request $request) {
+      
+        if(!$request->student_id) {
+            return redirect()->back();
+        }
+        $student = Student::where('id', $request->student_id)->get();
+        $student[0]->update([
+            'group_id'=>$request->group_id
+        ]);
+
+        return redirect()->back()->with('storeStatus', 'Student Assigned to the group ');
+    }
+
+
+ 
+
+
     public function destroy(Student $student)
     {
-        //
+        try {
+           
+            
+            $student->delete();
+          
+            return redirect()->back()->with('storeStatus', 'Successfully deleted');
+        }        
+        catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withErrors(['Failed to delete']);
+            
+        }
     }
 }
